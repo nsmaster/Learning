@@ -100,6 +100,9 @@
 		E67CF10C17F34C9A0016A160 /* VKCachedData.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CF0B917F34C9A0016A160 /* VKCachedData.m */; };
 		E67CF10D17F34C9A0016A160 /* VKStorageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CF0BC17F34C9A0016A160 /* VKStorageItem.m */; };
 		E67CF10E17F34C9A0016A160 /* VKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E67CF0BF17F34C9A0016A160 /* VKUser.m */; };
+		E67CF11017F34D220016A160 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67CF10F17F34D220016A160 /* QuartzCore.framework */; };
+		E67CF11217F403C20016A160 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E67CF11117F403C20016A160 /* CoreData.framework */; };
+		E67CF11517F404E40016A160 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E67CF11317F404E40016A160 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +227,9 @@
 		E67CF0BC17F34C9A0016A160 /* VKStorageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKStorageItem.m; sourceTree = "<group>"; };
 		E67CF0BE17F34C9A0016A160 /* VKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKUser.h; sourceTree = "<group>"; };
 		E67CF0BF17F34C9A0016A160 /* VKUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKUser.m; sourceTree = "<group>"; };
+		E67CF10F17F34D220016A160 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E67CF11117F403C20016A160 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E67CF11417F404E40016A160 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +237,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E67CF11217F403C20016A160 /* CoreData.framework in Frameworks */,
+				E67CF11017F34D220016A160 /* QuartzCore.framework in Frameworks */,
 				E67CF01517F34C7A0016A160 /* CoreGraphics.framework in Frameworks */,
 				E67CF01717F34C7A0016A160 /* UIKit.framework in Frameworks */,
 				E67CF01317F34C7A0016A160 /* Foundation.framework in Frameworks */,
@@ -253,6 +261,7 @@
 		E67CF00617F34C7A0016A160 = {
 			isa = PBXGroup;
 			children = (
+				E67CF11317F404E40016A160 /* Model.xcdatamodeld */,
 				E67CF01817F34C7A0016A160 /* VKClient */,
 				E67CF03717F34C7B0016A160 /* VKClientTests */,
 				E67CF04717F34C9A0016A160 /* Vkontakte-iOS-SDK-v2.0 */,
@@ -273,6 +282,8 @@
 		E67CF01117F34C7A0016A160 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E67CF11117F403C20016A160 /* CoreData.framework */,
+				E67CF10F17F34D220016A160 /* QuartzCore.framework */,
 				E67CF01217F34C7A0016A160 /* Foundation.framework */,
 				E67CF01417F34C7A0016A160 /* CoreGraphics.framework */,
 				E67CF01617F34C7A0016A160 /* UIKit.framework */,
@@ -822,6 +833,7 @@
 				E67CF10B17F34C9A0016A160 /* VKAccessToken.m in Sources */,
 				E67CF10317F34C9A0016A160 /* NSString+encodeURL.m in Sources */,
 				E67CF10217F34C9A0016A160 /* NSData+toBase64.m in Sources */,
+				E67CF11517F404E40016A160 /* Model.xcdatamodeld in Sources */,
 				E67CF01F17F34C7A0016A160 /* main.m in Sources */,
 				E67CF10817F34C9A0016A160 /* VKConnector.m in Sources */,
 				E67CF10517F34C9A0016A160 /* NSString+toBase64.m in Sources */,
@@ -1044,6 +1056,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E67CF11317F404E40016A160 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E67CF11417F404E40016A160 /* Model.xcdatamodel */,
+			);
+			currentVersion = E67CF11417F404E40016A160 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E67CF00717F34C7A0016A160 /* Project object */;
 }
