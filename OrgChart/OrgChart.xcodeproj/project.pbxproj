@@ -22,6 +22,7 @@
 		E66C55EA17F5723D00010166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E66C55E817F5723D00010166 /* InfoPlist.strings */; };
 		E66C55EC17F5723D00010166 /* OrgChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E66C55EB17F5723D00010166 /* OrgChartTests.m */; };
 		E66C55F617F5724A00010166 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66C55F517F5724A00010166 /* CoreData.framework */; };
+		E66C55F917F5744E00010166 /* OrgChart.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E66C55F717F5744E00010166 /* OrgChart.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E66C55E917F5723D00010166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E66C55EB17F5723D00010166 /* OrgChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrgChartTests.m; sourceTree = "<group>"; };
 		E66C55F517F5724A00010166 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E66C55F817F5744E00010166 /* OrgChart.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OrgChart.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		E66C55B417F5723D00010166 = {
 			isa = PBXGroup;
 			children = (
+				E66C55F717F5744E00010166 /* OrgChart.xcdatamodeld */,
 				E66C55C617F5723D00010166 /* OrgChart */,
 				E66C55E517F5723D00010166 /* OrgChartTests */,
 				E66C55BF17F5723D00010166 /* Frameworks */,
@@ -256,6 +259,7 @@
 				E66C55D717F5723D00010166 /* ViewController.m in Sources */,
 				E66C55D117F5723D00010166 /* AppDelegate.m in Sources */,
 				E66C55CD17F5723D00010166 /* main.m in Sources */,
+				E66C55F917F5744E00010166 /* OrgChart.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +478,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E66C55F717F5744E00010166 /* OrgChart.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E66C55F817F5744E00010166 /* OrgChart.xcdatamodel */,
+			);
+			currentVersion = E66C55F817F5744E00010166 /* OrgChart.xcdatamodel */;
+			path = OrgChart.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E66C55B517F5723D00010166 /* Project object */;
 }
