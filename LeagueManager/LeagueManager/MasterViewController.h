@@ -15,4 +15,7 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+- (void)insertTeamWithName:(NSString *)name uniformColor:(NSString *)uniformColor;
+- (void)saveContext;
+
 @end

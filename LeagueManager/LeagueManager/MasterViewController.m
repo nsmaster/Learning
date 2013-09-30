@@ -7,8 +7,8 @@
 //
 
 #import "MasterViewController.h"
-
-#import "DetailViewController.h"
+#import "TeamViewController.h"
+#import "PlayerViewController.h"
 
 @interface MasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -16,46 +16,36 @@
 
 @implementation MasterViewController
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    self.title = NSLocalizedString(@"League Manager", @"League Manager");
+    
+    // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewTeam)];
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)addNewTeam
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSManagedObject *newObject = [NSEntityDescription insertNewObjectForEntityForName:@"Team" inManagedObjectContext:self.managedObjectContext];
+    
+    [newObject setValue:@"New Team" forKey:@"name"];
+    
+    [self saveContext];
 }
 
-- (void)insertNewObject:(id)sender
-{
-    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-    
-    // Save the context.
-    NSError *error = nil;
-    if (![context save:&error]) {
-         // Replace this implementation with code to handle the error appropriately.
-         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-}
+//- (void)showTeamView
+//{
+//    TeamViewController *teamViewController = [[TeamViewController alloc] initWithNibName:@"TeamViewController" bundle:nil];
+//    [self.navigationController pushViewController:teamViewController animated:YES];
+//    
+////    [self presentViewController:teamViewController animated:YES completion:nil];
+//}
 
 #pragma mark - Table View
 
@@ -72,7 +62,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    static NSString *CeelId = @"TeamCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CeelId forIndexPath:indexPath];
+    
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CeelId];
+    }
+    
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -86,16 +83,11 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+        id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
-        NSError *error = nil;
-        if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
+        [self.managedObjectContext deleteObject:object];
+        
+        [self saveContext];
     }   
 }
 
@@ -107,10 +99,24 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    if ([[segue identifier] isEqualToString:@"teamProperties"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setDetailItem:object];
+        TeamViewController *controller = [segue destinationViewController];
+        
+        controller.masterController = self;
+        controller.team = object;
+    }
+    
+    if([[segue identifier] isEqualToString:@"playerList"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        
+        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        PlayerViewController *controller = [segue destinationViewController];
+        
+        controller.masterViewController = self;
+        controller.team = object;
     }
 }
 
@@ -124,14 +130,14 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Team" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -216,7 +222,33 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    cell.textLabel.text = [[object valueForKey:@"name"] description];
+    cell.detailTextLabel.text = [[object valueForKey:@"uniformColor"] description];
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+}
+
+- (void)insertTeamWithName:(NSString *)name uniformColor:(NSString *)uniformColor
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    
+    
+    [newManagedObject setValue:name forKey:@"name"];
+    [newManagedObject setValue:uniformColor forKey:@"uniformColor"];
+    
+    [self saveContext];
+}
+
+- (void)saveContext
+{
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    NSError *error = nil;
+    
+    if(![context save:&error]){
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 @end

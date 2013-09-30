@@ -17,7 +17,6 @@
 		E66909C517F6CF69009DFB56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E66909C317F6CF69009DFB56 /* Main.storyboard */; };
 		E66909C817F6CF69009DFB56 /* LeagueManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E66909C617F6CF69009DFB56 /* LeagueManager.xcdatamodeld */; };
 		E66909CB17F6CF69009DFB56 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909CA17F6CF69009DFB56 /* MasterViewController.m */; };
-		E66909CE17F6CF69009DFB56 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909CD17F6CF69009DFB56 /* DetailViewController.m */; };
 		E66909D017F6CF69009DFB56 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E66909CF17F6CF69009DFB56 /* Images.xcassets */; };
 		E66909D717F6CF69009DFB56 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66909D617F6CF69009DFB56 /* XCTest.framework */; };
 		E66909D817F6CF69009DFB56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66909AF17F6CF69009DFB56 /* Foundation.framework */; };
@@ -25,6 +24,7 @@
 		E66909DA17F6CF69009DFB56 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66909B517F6CF69009DFB56 /* CoreData.framework */; };
 		E66909E217F6CF69009DFB56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E66909E017F6CF69009DFB56 /* InfoPlist.strings */; };
 		E66909E417F6CF69009DFB56 /* LeagueManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909E317F6CF69009DFB56 /* LeagueManagerTests.m */; };
+		E66909F017F6DD2E009DFB56 /* TeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909EE17F6DD2E009DFB56 /* TeamViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,14 +53,14 @@
 		E66909C717F6CF69009DFB56 /* LeagueManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LeagueManager.xcdatamodel; sourceTree = "<group>"; };
 		E66909C917F6CF69009DFB56 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		E66909CA17F6CF69009DFB56 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		E66909CC17F6CF69009DFB56 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		E66909CD17F6CF69009DFB56 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		E66909CF17F6CF69009DFB56 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E66909D517F6CF69009DFB56 /* LeagueManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeagueManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66909D617F6CF69009DFB56 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E66909DF17F6CF69009DFB56 /* LeagueManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LeagueManagerTests-Info.plist"; sourceTree = "<group>"; };
 		E66909E117F6CF69009DFB56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E66909E317F6CF69009DFB56 /* LeagueManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeagueManagerTests.m; sourceTree = "<group>"; };
+		E66909ED17F6DD2E009DFB56 /* TeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamViewController.h; path = ../TeamViewController.h; sourceTree = "<group>"; };
+		E66909EE17F6DD2E009DFB56 /* TeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TeamViewController.m; path = ../TeamViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +128,8 @@
 				E66909C317F6CF69009DFB56 /* Main.storyboard */,
 				E66909C917F6CF69009DFB56 /* MasterViewController.h */,
 				E66909CA17F6CF69009DFB56 /* MasterViewController.m */,
-				E66909CC17F6CF69009DFB56 /* DetailViewController.h */,
-				E66909CD17F6CF69009DFB56 /* DetailViewController.m */,
+				E66909ED17F6DD2E009DFB56 /* TeamViewController.h */,
+				E66909EE17F6DD2E009DFB56 /* TeamViewController.m */,
 				E66909CF17F6CF69009DFB56 /* Images.xcassets */,
 				E66909C617F6CF69009DFB56 /* LeagueManager.xcdatamodeld */,
 				E66909B817F6CF69009DFB56 /* Supporting Files */,
@@ -263,7 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E66909CE17F6CF69009DFB56 /* DetailViewController.m in Sources */,
+				E66909F017F6DD2E009DFB56 /* TeamViewController.m in Sources */,
 				E66909CB17F6CF69009DFB56 /* MasterViewController.m in Sources */,
 				E66909C217F6CF69009DFB56 /* AppDelegate.m in Sources */,
 				E66909BE17F6CF69009DFB56 /* main.m in Sources */,
