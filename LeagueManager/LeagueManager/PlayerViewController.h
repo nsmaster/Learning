@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MasterViewController.h"
 
 @interface PlayerViewController : UITableViewController
+
+@property (nonatomic, retain) MasterViewController *masterViewController;
+
+@property (nonatomic, retain) NSManagedObject *team;
 
 @end

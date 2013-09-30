@@ -25,6 +25,7 @@
 		E66909E217F6CF69009DFB56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E66909E017F6CF69009DFB56 /* InfoPlist.strings */; };
 		E66909E417F6CF69009DFB56 /* LeagueManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909E317F6CF69009DFB56 /* LeagueManagerTests.m */; };
 		E66909F017F6DD2E009DFB56 /* TeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909EE17F6DD2E009DFB56 /* TeamViewController.m */; };
+		E68C1E8517F9622600F4AD5E /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E68C1E8417F9622600F4AD5E /* PlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		E66909E317F6CF69009DFB56 /* LeagueManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeagueManagerTests.m; sourceTree = "<group>"; };
 		E66909ED17F6DD2E009DFB56 /* TeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamViewController.h; path = ../TeamViewController.h; sourceTree = "<group>"; };
 		E66909EE17F6DD2E009DFB56 /* TeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TeamViewController.m; path = ../TeamViewController.m; sourceTree = "<group>"; };
+		E68C1E8317F9622600F4AD5E /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		E68C1E8417F9622600F4AD5E /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				E66909CA17F6CF69009DFB56 /* MasterViewController.m */,
 				E66909ED17F6DD2E009DFB56 /* TeamViewController.h */,
 				E66909EE17F6DD2E009DFB56 /* TeamViewController.m */,
+				E68C1E8317F9622600F4AD5E /* PlayerViewController.h */,
+				E68C1E8417F9622600F4AD5E /* PlayerViewController.m */,
 				E66909CF17F6CF69009DFB56 /* Images.xcassets */,
 				E66909C617F6CF69009DFB56 /* LeagueManager.xcdatamodeld */,
 				E66909B817F6CF69009DFB56 /* Supporting Files */,
@@ -268,6 +273,7 @@
 				E66909C217F6CF69009DFB56 /* AppDelegate.m in Sources */,
 				E66909BE17F6CF69009DFB56 /* main.m in Sources */,
 				E66909C817F6CF69009DFB56 /* LeagueManager.xcdatamodeld in Sources */,
+				E68C1E8517F9622600F4AD5E /* PlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +482,7 @@
 				E66909E917F6CF69009DFB56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E66909EA17F6CF69009DFB56 /* Build configuration list for PBXNativeTarget "LeagueManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +491,7 @@
 				E66909EC17F6CF69009DFB56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

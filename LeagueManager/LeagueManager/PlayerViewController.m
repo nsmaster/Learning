@@ -9,6 +9,9 @@
 #import "PlayerViewController.h"
 
 @interface PlayerViewController ()
+{
+    NSArray *players;
+}
 
 @end
 
@@ -27,11 +30,11 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPlayer)];
+    
+    self.navigationItem.rightBarButtonItem = addButton;
+    
+    [self reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,28 +43,44 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)reloadData
+{
+    NSSet *set = [self.team valueForKey:@"players"];
+    
+    NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
+    
+    players = [[set allObjects] sortedArrayUsingDescriptors:@[sortDesc]];
+}
+
+- (void)addPlayer
+{
+    NSManagedObject *newPlayer = [NSEntityDescription insertNewObjectForEntityForName:@"Player" inManagedObjectContext:self.masterViewController.managedObjectContext];
+    
+    [newPlayer setValue:@"New Player" forKey:@"lastName"];
+    [newPlayer setValue:self.team forKey:@"team"];
+    
+    [self.masterViewController saveContext];
+    [self reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [players count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"PlayerCellId";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = [[players[indexPath.row] valueForKey:@"lastName"] description];
     
     return cell;
 }
