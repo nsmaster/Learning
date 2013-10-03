@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MasterViewController.h"
 
-@interface PlayerViewController : UITableViewController
+@interface PlayerListViewController : UITableViewController
 
 @property (nonatomic, retain) MasterViewController *masterViewController;
 

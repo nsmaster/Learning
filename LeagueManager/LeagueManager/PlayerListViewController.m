@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Nikolay Shatilo. All rights reserved.
 //
 
-#import "PlayerViewController.h"
+#import "PlayerListViewController.h"
 
-@interface PlayerViewController ()
+@interface PlayerListViewController ()
 {
-    NSArray *players;
+    NSMutableArray *players;
 }
 
 @end
 
-@implementation PlayerViewController
+@implementation PlayerListViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -49,7 +49,7 @@
     
     NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
     
-    players = [[set allObjects] sortedArrayUsingDescriptors:@[sortDesc]];
+    players = [[NSMutableArray alloc] initWithArray:[[set allObjects] sortedArrayUsingDescriptors:@[sortDesc]]];
 }
 
 - (void)addPlayer
@@ -61,6 +61,7 @@
     
     [self.masterViewController saveContext];
     [self reloadData];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -85,20 +86,25 @@
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObject *player = [players objectAtIndex:indexPath.row];
+        
+        [players removeObject:player];
+        [self.masterViewController.managedObjectContext deleteObject:player];
+        [self.masterViewController saveContext];
+        
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
@@ -106,7 +112,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -124,16 +130,15 @@
 }
 */
 
-/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"playerProperties"]) {
+         [segue destinationViewController];
+    }
 }
 
- */
 
 @end

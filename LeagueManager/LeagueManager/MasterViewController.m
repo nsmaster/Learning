@@ -8,9 +8,12 @@
 
 #import "MasterViewController.h"
 #import "TeamViewController.h"
-#import "PlayerViewController.h"
+#import "PlayerListViewController.h"
 
 @interface MasterViewController ()
+{
+    NSIndexPath *deleteItem;
+}
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -46,6 +49,20 @@
 //    
 ////    [self presentViewController:teamViewController animated:YES completion:nil];
 //}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.destructiveButtonIndex) {
+        id object = [self.fetchedResultsController objectAtIndexPath:deleteItem];
+        
+        [self.managedObjectContext deleteObject:object];
+        
+        [self saveContext];
+    }
+    else {
+        [self.tableView setEditing:NO animated:YES];
+    }
+}
 
 #pragma mark - Table View
 
@@ -83,11 +100,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        id object = [self.fetchedResultsController objectAtIndexPath:indexPath];
         
-        [self.managedObjectContext deleteObject:object];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Do want to delete the team?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
         
-        [self saveContext];
+        actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        
+        deleteItem = indexPath;
+        
+        [actionSheet showInView:self.view];
     }   
 }
 
@@ -113,7 +133,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        PlayerViewController *controller = [segue destinationViewController];
+        PlayerListViewController *controller = [segue destinationViewController];
         
         controller.masterViewController = self;
         controller.team = object;
