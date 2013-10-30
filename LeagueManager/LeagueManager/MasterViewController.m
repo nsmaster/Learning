@@ -9,12 +9,15 @@
 #import "MasterViewController.h"
 #import "TeamViewController.h"
 #import "PlayerListViewController.h"
+#import "CustomCellContent.h"
 
 @interface MasterViewController ()
 {
     NSIndexPath *deleteItem;
 }
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 @implementation MasterViewController
@@ -27,28 +30,22 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewTeam)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showTeamView)];
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
-- (void)addNewTeam
+- (void)showTeamView
 {
-    NSManagedObject *newObject = [NSEntityDescription insertNewObjectForEntityForName:@"Team" inManagedObjectContext:self.managedObjectContext];
+    UIStoryboard *storyBoard = self.storyboard;
     
-    [newObject setValue:@"New Team" forKey:@"name"];
-    
-    [self saveContext];
-}
+    TeamViewController *teamViewController = [storyBoard instantiateViewControllerWithIdentifier:@"TeamProperties"];
+    teamViewController.masterController = self;
 
-//- (void)showTeamView
-//{
-//    TeamViewController *teamViewController = [[TeamViewController alloc] initWithNibName:@"TeamViewController" bundle:nil];
-//    [self.navigationController pushViewController:teamViewController animated:YES];
-//    
-////    [self presentViewController:teamViewController animated:YES completion:nil];
-//}
+    [self.navigationController pushViewController:teamViewController animated:YES];
+    
+//    [self presentViewController:teamViewController animated:YES completion:nil];
+}
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -64,7 +61,7 @@
     }
 }
 
-#pragma mark - Table View
+#pragma mark - Table View DataSource and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -79,21 +76,28 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CeelId = @"TeamCell";
+    static NSString *CeelId = @"TeamCellId";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CeelId forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CeelId];
     
     if(cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CeelId];
+        
+        CustomCellContent *customCell = [[CustomCellContent alloc] initWithFrame:cell.contentView.frame];
+        
+        customCell.tag = 8;
+        
+        [cell.contentView addSubview:customCell];
     }
+    cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
     
     [self configureCell:cell atIndexPath:indexPath];
+    
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
@@ -113,7 +117,6 @@
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // The table view should not be re-orderable.
     return NO;
 }
 
@@ -140,6 +143,29 @@
     }
 }
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSMutableArray *indexTitles = [[NSMutableArray alloc] init];
+    
+    for (id<NSFetchedResultsSectionInfo> item in [self.fetchedResultsController sections]) {
+        [indexTitles addObject:item.indexTitle];
+    }
+    
+    return indexTitles;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    id<NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    
+    return sectionInfo.indexTitle;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return index;
+}
+
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -157,14 +183,14 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"indexTitle" cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -229,21 +255,15 @@
     [self.tableView endUpdates];
 }
 
-/*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    // In the simplest, most efficient, case, reload the table view.
-    [self.tableView reloadData];
-}
- */
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"name"] description];
-    cell.detailTextLabel.text = [[object valueForKey:@"uniformColor"] description];
+    CustomCellContent *customCellContent = (CustomCellContent *)[cell.contentView viewWithTag:8];
+    
+    customCellContent.title = [[object valueForKey:@"name"] description];
+    
+//    cell.textLabel.text = [[object valueForKey:@"name"] description];
+//    cell.detailTextLabel.text = [[object valueForKey:@"uniformColor"] description];
     cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 }
 
@@ -253,9 +273,9 @@
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
     
-    
     [newManagedObject setValue:name forKey:@"name"];
     [newManagedObject setValue:uniformColor forKey:@"uniformColor"];
+    [newManagedObject setValue:[name substringToIndex:1] forKey:@"indexTitle"];
     
     [self saveContext];
 }

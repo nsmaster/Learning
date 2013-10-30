@@ -11,8 +11,8 @@
 
 @interface PlayerListViewController : UITableViewController
 
-@property (nonatomic, retain) MasterViewController *masterViewController;
+@property (nonatomic, weak) MasterViewController *masterViewController;
 
-@property (nonatomic, retain) NSManagedObject *team;
+@property (nonatomic, weak) NSManagedObject *team;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E61EDBEE1817E1F1000BABA4 /* CustomCellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = E61EDBED1817E1F1000BABA4 /* CustomCellContent.m */; };
 		E66909B017F6CF69009DFB56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66909AF17F6CF69009DFB56 /* Foundation.framework */; };
 		E66909B217F6CF69009DFB56 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66909B117F6CF69009DFB56 /* CoreGraphics.framework */; };
 		E66909B417F6CF69009DFB56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E66909B317F6CF69009DFB56 /* UIKit.framework */; };
@@ -26,6 +27,7 @@
 		E66909E417F6CF69009DFB56 /* LeagueManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909E317F6CF69009DFB56 /* LeagueManagerTests.m */; };
 		E66909F017F6DD2E009DFB56 /* TeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E66909EE17F6DD2E009DFB56 /* TeamViewController.m */; };
 		E68C1E8517F9622600F4AD5E /* PlayerListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E68C1E8417F9622600F4AD5E /* PlayerListViewController.m */; };
+		E6C855B41810026700808BB3 /* PlayerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6C855B31810026700808BB3 /* PlayerDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E61EDBEC1817E1F1000BABA4 /* CustomCellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellContent.h; sourceTree = "<group>"; };
+		E61EDBED1817E1F1000BABA4 /* CustomCellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellContent.m; sourceTree = "<group>"; };
 		E66909AC17F6CF69009DFB56 /* LeagueManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeagueManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E66909AF17F6CF69009DFB56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E66909B117F6CF69009DFB56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,6 +68,8 @@
 		E66909EE17F6DD2E009DFB56 /* TeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TeamViewController.m; path = ../TeamViewController.m; sourceTree = "<group>"; };
 		E68C1E8317F9622600F4AD5E /* PlayerListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerListViewController.h; sourceTree = "<group>"; };
 		E68C1E8417F9622600F4AD5E /* PlayerListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerListViewController.m; sourceTree = "<group>"; };
+		E6C855B21810026700808BB3 /* PlayerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerDetailViewController.h; sourceTree = "<group>"; };
+		E6C855B31810026700808BB3 /* PlayerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +141,13 @@
 				E66909EE17F6DD2E009DFB56 /* TeamViewController.m */,
 				E68C1E8317F9622600F4AD5E /* PlayerListViewController.h */,
 				E68C1E8417F9622600F4AD5E /* PlayerListViewController.m */,
+				E6C855B21810026700808BB3 /* PlayerDetailViewController.h */,
+				E6C855B31810026700808BB3 /* PlayerDetailViewController.m */,
 				E66909CF17F6CF69009DFB56 /* Images.xcassets */,
 				E66909C617F6CF69009DFB56 /* LeagueManager.xcdatamodeld */,
 				E66909B817F6CF69009DFB56 /* Supporting Files */,
+				E61EDBEC1817E1F1000BABA4 /* CustomCellContent.h */,
+				E61EDBED1817E1F1000BABA4 /* CustomCellContent.m */,
 			);
 			path = LeagueManager;
 			sourceTree = "<group>";
@@ -270,7 +280,9 @@
 			files = (
 				E66909F017F6DD2E009DFB56 /* TeamViewController.m in Sources */,
 				E66909CB17F6CF69009DFB56 /* MasterViewController.m in Sources */,
+				E61EDBEE1817E1F1000BABA4 /* CustomCellContent.m in Sources */,
 				E66909C217F6CF69009DFB56 /* AppDelegate.m in Sources */,
+				E6C855B41810026700808BB3 /* PlayerDetailViewController.m in Sources */,
 				E66909BE17F6CF69009DFB56 /* main.m in Sources */,
 				E66909C817F6CF69009DFB56 /* LeagueManager.xcdatamodeld in Sources */,
 				E68C1E8517F9622600F4AD5E /* PlayerListViewController.m in Sources */,

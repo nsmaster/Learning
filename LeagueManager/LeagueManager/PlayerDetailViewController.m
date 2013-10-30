@@ -1,21 +1,18 @@
 //
-//  PlayerViewController.m
+//  PlayerDetailViewController.m
 //  LeagueManager
 //
-//  Created by Nikolay Shatilo on 30.09.13.
+//  Created by Nikolay Shatilo on 17.10.13.
 //  Copyright (c) 2013 Nikolay Shatilo. All rights reserved.
 //
 
-#import "PlayerListViewController.h"
+#import "PlayerDetailViewController.h"
 
-@interface PlayerListViewController ()
-{
-    NSMutableArray *players;
-}
+@interface PlayerDetailViewController ()
 
 @end
 
-@implementation PlayerListViewController
+@implementation PlayerDetailViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,16 +27,11 @@
 {
     [super viewDidLoad];
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPlayer)];
-    
-    self.navigationItem.rightBarButtonItem = addButton;
-    
-    [self reloadData];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,68 +40,46 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)reloadData
-{
-    NSSet *set = [self.team valueForKey:@"players"];
-    
-    NSSortDescriptor *sortDesc = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES];
-    
-    players = [[NSMutableArray alloc] initWithArray:[[set allObjects] sortedArrayUsingDescriptors:@[sortDesc]]];
-}
-
-- (void)addPlayer
-{
-    NSManagedObject *newPlayer = [NSEntityDescription insertNewObjectForEntityForName:@"Player" inManagedObjectContext:self.masterViewController.managedObjectContext];
-    
-    [newPlayer setValue:@"New Player" forKey:@"lastName"];
-    [newPlayer setValue:self.team forKey:@"team"];
-    
-    [self.masterViewController saveContext];
-    [self reloadData];
-    [self.tableView reloadData];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [players count];
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PlayerCellId";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [[players[indexPath.row] valueForKey:@"lastName"] description];
+    // Configure the cell...
     
     return cell;
 }
 
-
+/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
+*/
 
-
+/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObject *player = [players objectAtIndex:indexPath.row];
-        
-        [players removeObject:player];
-        [self.masterViewController.managedObjectContext deleteObject:player];
-        [self.masterViewController saveContext];
-        
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
@@ -117,7 +87,7 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
+*/
 
 /*
 // Override to support rearranging the table view.
@@ -135,15 +105,16 @@
 }
 */
 
+/*
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([[segue identifier] isEqualToString:@"playerProperties"]) {
-         [segue destinationViewController];
-    }
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
 
+ */
 
 @end

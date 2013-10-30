@@ -7,6 +7,7 @@
 //
 
 #import "TeamViewController.h"
+#import "PlayerDetailViewController.h"
 
 @interface TeamViewController ()
 
@@ -56,6 +57,7 @@
         if(self.team != nil){
             [self.team setValue:self.name.text forKey:@"name"];
             [self.team setValue:self.uniformColor.text forKey:@"uniformColor"];
+            [self.team setValue:[self.name.text substringToIndex:1] forKey:@"indexTitle"];
             [self.masterController saveContext];
         } else {
             [self.masterController insertTeamWithName:self.name.text uniformColor:self.uniformColor.text];

@@ -11,10 +11,10 @@
 
 @interface TeamViewController : UITableViewController<UITableViewDataSource, UITableViewDataSource>
 
-@property (nonatomic, retain) IBOutlet UITextField *name;
-@property (nonatomic, retain) IBOutlet UITextField *uniformColor;
-@property (nonatomic, retain) NSManagedObject *team;
-@property (nonatomic, retain) MasterViewController *masterController;
+@property (nonatomic, strong) IBOutlet UITextField *name;
+@property (nonatomic, strong) IBOutlet UITextField *uniformColor;
+@property (nonatomic, weak) NSManagedObject *team;
+@property (nonatomic, weak) MasterViewController *masterController;
 
 - (id)initWithMasterController:(MasterViewController *)masterController team:(NSManagedObject *)team;
 
