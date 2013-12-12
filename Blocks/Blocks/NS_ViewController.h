@@ -1,8 +1,8 @@
 //
 //  NS_ViewController.h
-//  EditingAndOrderingTable
+//  Blocks
 //
-//  Created by Nikolay Shatilo on 30.10.13.
+//  Created by Nikolay Shatilo on 12.12.13.
 //  Copyright (c) 2013 Nikolay Shatilo. All rights reserved.
 //
 

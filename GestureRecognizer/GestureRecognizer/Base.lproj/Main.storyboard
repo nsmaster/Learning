@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="NS_ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bmn-WN-ASI"/>
+                        <viewControllerLayoutGuide type="bottom" id="P7m-MJ-cI8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photo_ts.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="l7S-i4-wjm">
+                                <rect key="frame" x="116" y="70" width="89" height="87"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="flL-rE-Vj8" appends="YES" id="UMR-XR-ukl"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5ZH-z7-Jz3" appends="YES" id="OMu-ld-bYV"/>
+                            <outletCollection property="gestureRecognizers" destination="jGY-dB-ydS" appends="YES" id="1mM-bT-wqD"/>
+                            <outletCollection property="gestureRecognizers" destination="NMr-FR-Dk8" appends="YES" id="s46-dz-wdj"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="l7S-i4-wjm" id="kPg-hY-ykc"/>
+                        <outlet property="panGesture" destination="flL-rE-Vj8" id="qcd-Rt-jV2"/>
+                        <outlet property="pinchGesture" destination="jGY-dB-ydS" id="VHP-fF-yhL"/>
+                        <outlet property="rotationGesture" destination="5ZH-z7-Jz3" id="VZ7-rz-FU7"/>
+                        <outlet property="swipeGesture" destination="NMr-FR-Dk8" id="FfE-gf-nop"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <rotationGestureRecognizer id="5ZH-z7-Jz3">
+                    <connections>
+                        <action selector="showGestureForRotationRecognizer:" destination="vXZ-lx-hvc" id="vMp-cT-zZw"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="gLM-BM-aGi"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="flL-rE-Vj8">
+                    <connections>
+                        <action selector="panGestureRecognized:" destination="vXZ-lx-hvc" id="u8d-zv-TwN"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pinchGestureRecognizer id="jGY-dB-ydS">
+                    <connections>
+                        <action selector="handlePinch:" destination="vXZ-lx-hvc" id="XoP-2k-b6H"/>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="G31-R7-hux"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="NMr-FR-Dk8">
+                    <connections>
+                        <action selector="handleSwipe:" destination="vXZ-lx-hvc" id="vnM-aa-NUl"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="photo_ts.jpg" width="600" height="600"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
