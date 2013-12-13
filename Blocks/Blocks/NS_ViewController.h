@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef int (^GetResult)(int, int);
 
 @interface NS_ViewController : UIViewController
+{
+    
+}
+
+
+
 
 @end
