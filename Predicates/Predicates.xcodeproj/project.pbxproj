@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E6A3C09D187B00F7003A1347 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A3C09C187B00F7003A1347 /* Shop.m */; };
 		E6A3C0A0187B0217003A1347 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6A3C09F187B0217003A1347 /* ShopViewController.m */; };
 		E6F7F33518770E1100BC3E63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F7F33418770E1100BC3E63 /* Foundation.framework */; };
 		E6F7F33718770E1100BC3E63 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F7F33618770E1100BC3E63 /* CoreGraphics.framework */; };
@@ -25,6 +24,7 @@
 		E6F7F36718770F1B00BC3E63 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6F7F36618770F1B00BC3E63 /* Storyboard.storyboard */; };
 		E6F7F36A18770F4600BC3E63 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F7F36918770F4600BC3E63 /* MainViewController.m */; };
 		E6F7F36D18780D1B00BC3E63 /* ProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E6F7F36C18780D1B00BC3E63 /* ProductViewController.m */; };
+		E6FEDB63188FCBCA00E60907 /* Shop.m in Sources */ = {isa = PBXBuildFile; fileRef = E6FEDB62188FCBCA00E60907 /* Shop.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E6A3C09B187B00F7003A1347 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shop.h; path = ../Shop.h; sourceTree = "<group>"; };
-		E6A3C09C187B00F7003A1347 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shop.m; path = ../Shop.m; sourceTree = "<group>"; };
 		E6A3C09E187B0217003A1347 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
 		E6A3C09F187B0217003A1347 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
 		E6F7F33118770E1100BC3E63 /* Predicates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Predicates.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +63,8 @@
 		E6F7F36918770F4600BC3E63 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		E6F7F36B18780D1B00BC3E63 /* ProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductViewController.h; sourceTree = "<group>"; };
 		E6F7F36C18780D1B00BC3E63 /* ProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductViewController.m; sourceTree = "<group>"; };
+		E6FEDB61188FCBCA00E60907 /* Shop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shop.h; sourceTree = "<group>"; };
+		E6FEDB62188FCBCA00E60907 /* Shop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shop.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +137,8 @@
 				E6F7F33B18770E1100BC3E63 /* Supporting Files */,
 				E6F7F36318770EB500BC3E63 /* Product.h */,
 				E6F7F36418770EB500BC3E63 /* Product.m */,
-				E6A3C09B187B00F7003A1347 /* Shop.h */,
-				E6A3C09C187B00F7003A1347 /* Shop.m */,
+				E6FEDB61188FCBCA00E60907 /* Shop.h */,
+				E6FEDB62188FCBCA00E60907 /* Shop.m */,
 			);
 			path = Predicates;
 			sourceTree = "<group>";
@@ -268,12 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6FEDB63188FCBCA00E60907 /* Shop.m in Sources */,
 				E6F7F36518770EB500BC3E63 /* Product.m in Sources */,
 				E6F7F36D18780D1B00BC3E63 /* ProductViewController.m in Sources */,
 				E6F7F34518770E1100BC3E63 /* AppDelegate.m in Sources */,
 				E6F7F34118770E1100BC3E63 /* main.m in Sources */,
 				E6F7F36A18770F4600BC3E63 /* MainViewController.m in Sources */,
-				E6A3C09D187B00F7003A1347 /* Shop.m in Sources */,
 				E6A3C0A0187B0217003A1347 /* ShopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

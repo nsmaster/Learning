@@ -55,6 +55,10 @@
 {
     if(!_shops) {
         Shop * shop1 = [[Shop alloc] initWithName:@"Shop 1"];
+        
+        shop1.products = @[[[Product alloc] initWithName:@"Item 1" cost:[NSNumber numberWithDouble:3.14]],
+                           [[Product alloc] initWithName:@"Item 2" cost:[NSNumber numberWithDouble:3.15]]];
+        
         Shop * shop2 = [[Shop alloc] initWithName:@"Shop 2"];
         Shop * shop3 = [[Shop alloc] initWithName:@"Shop 3"];
         
@@ -88,6 +92,15 @@
         ShopViewController *controller = segue.destinationViewController;
         
         controller.shops = self.shops;
+        controller.navigationItem.title = @"Shops";
+    } else if ([segue.identifier isEqualToString:@"moreThanOneProducts"]) {
+        ShopViewController *controller = segue.destinationViewController;
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"products.count > 1"];
+        
+        controller.shops = [self.shops filteredArrayUsingPredicate:predicate];
+        controller.navigationItem.title = @"Shops";
+
     }
 }
 
