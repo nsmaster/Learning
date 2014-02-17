@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  LocalizableApp
+//  Localization
 //
 //  Created by Nikolay Shatilo on 16.02.14.
 //  Copyright (c) 2014 Nikolay Shatilo. All rights reserved.
@@ -18,6 +18,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.titleLabel.text = NSLocalizedString(@"TITLE", nil);
 }
 
 - (void)didReceiveMemoryWarning

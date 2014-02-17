@@ -1,6 +1,6 @@
 //
-//  LocalizableAppTests.m
-//  LocalizableAppTests
+//  LocalizationTests.m
+//  LocalizationTests
 //
 //  Created by Nikolay Shatilo on 16.02.14.
 //  Copyright (c) 2014 Nikolay Shatilo. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import <XCTest/XCTest.h>
 
-@interface LocalizableAppTests : XCTestCase
+@interface LocalizationTests : XCTestCase
 
 @end
 
-@implementation LocalizableAppTests
+@implementation LocalizationTests
 
 - (void)setUp
 {

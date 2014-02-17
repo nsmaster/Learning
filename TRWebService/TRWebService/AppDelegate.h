@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  LocalizableApp
+//  TRWebService
 //
-//  Created by Nikolay Shatilo on 16.02.14.
+//  Created by Nikolay Shatilo on 12.02.14.
 //  Copyright (c) 2014 Nikolay Shatilo. All rights reserved.
 //
 
