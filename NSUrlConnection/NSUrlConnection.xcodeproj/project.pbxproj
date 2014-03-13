@@ -21,6 +21,7 @@
 		E67D9365187D7DBE0091E8C8 /* NSUrlConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E67D9364187D7DBE0091E8C8 /* NSUrlConnectionTests.m */; };
 		E67D936F187D807D0091E8C8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67D936E187D807D0091E8C8 /* Storyboard.storyboard */; };
 		E67D9372187D80DA0091E8C8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E67D9371187D80DA0091E8C8 /* MainViewController.m */; };
+		E686B60E18B3A2930002B64D /* MyInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E686B60D18B3A2930002B64D /* MyInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,9 @@
 		E67D936E187D807D0091E8C8 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		E67D9370187D80DA0091E8C8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E67D9371187D80DA0091E8C8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		E686B60B18B369C40002B64D /* MyProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyProtocol.h; sourceTree = "<group>"; };
+		E686B60C18B3A2930002B64D /* MyInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInterface.h; sourceTree = "<group>"; };
+		E686B60D18B3A2930002B64D /* MyInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInterface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,9 @@
 				E67D9346187D7DBE0091E8C8 /* Supporting Files */,
 				E67D9370187D80DA0091E8C8 /* MainViewController.h */,
 				E67D9371187D80DA0091E8C8 /* MainViewController.m */,
+				E686B60B18B369C40002B64D /* MyProtocol.h */,
+				E686B60C18B3A2930002B64D /* MyInterface.h */,
+				E686B60D18B3A2930002B64D /* MyInterface.m */,
 			);
 			path = NSUrlConnection;
 			sourceTree = "<group>";
@@ -251,6 +258,7 @@
 				E67D9350187D7DBE0091E8C8 /* AppDelegate.m in Sources */,
 				E67D9372187D80DA0091E8C8 /* MainViewController.m in Sources */,
 				E67D934C187D7DBE0091E8C8 /* main.m in Sources */,
+				E686B60E18B3A2930002B64D /* MyInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +459,7 @@
 				E67D936A187D7DBE0091E8C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E67D936B187D7DBE0091E8C8 /* Build configuration list for PBXNativeTarget "NSUrlConnectionTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +468,7 @@
 				E67D936D187D7DBE0091E8C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

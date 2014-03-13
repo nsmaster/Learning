@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import "MyInterface.h"
+#import "MyProtocol.h"
 
 @interface MainViewController ()
 
