@@ -1,69 +1,122 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3s1-Ur-bZI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ytd-JL-GDm">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Web View Controller-->
+        <scene sceneID="ETT-s2-SmI">
+            <objects>
+                <viewController id="JIz-rT-0yG" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1aJ-80-3jL"/>
+                        <viewControllerLayoutGuide type="bottom" id="7cn-4d-atw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gR1-V1-vcZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="798-0g-uqP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="798-0g-uqP" secondAttribute="bottom" id="MXs-Gt-RT5"/>
+                            <constraint firstItem="798-0g-uqP" firstAttribute="top" secondItem="gR1-V1-vcZ" secondAttribute="top" id="YyF-Aa-rFf"/>
+                            <constraint firstItem="798-0g-uqP" firstAttribute="leading" secondItem="gR1-V1-vcZ" secondAttribute="leading" id="aeZ-gp-jxW"/>
+                            <constraint firstAttribute="trailing" secondItem="798-0g-uqP" secondAttribute="trailing" id="e3k-fa-Gmo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="c4q-Cf-3gP"/>
+                    <connections>
+                        <outlet property="webView" destination="798-0g-uqP" id="D5T-T8-kza"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nil-LK-URi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2007" y="79"/>
+        </scene>
+        <!--View Controller - RSS Reader-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1aG-VH-2Kj"/>
-                        <viewControllerLayoutGuide type="bottom" id="YQv-F0-y1f"/>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="jk4-0S-b48">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E9L-Tc-Dt6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyCell" id="85S-Uc-iHz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RssCell" textLabel="1dg-YQ-ety" style="IBUITableViewCellStyleDefault" id="cKh-8n-byH">
                                         <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="85S-Uc-iHz" id="OTu-qg-gFY">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cKh-8n-byH" id="7Zn-Dc-Msq">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" id="1dg-YQ-ety">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="JIz-rT-0yG" kind="push" identifier="web" id="xaU-Qh-wjR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="SON-tJ-RWp"/>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="nbJ-qT-IdU"/>
+                                    <outlet property="dataSource" destination="vXZ-lx-hvc" id="VRL-SM-Vea"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="pto-C8-Wvs"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="E9L-Tc-Dt6" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="4vd-pV-R9z"/>
+                            <constraint firstAttribute="trailing" secondItem="E9L-Tc-Dt6" secondAttribute="trailing" id="IXA-yb-2re"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="E9L-Tc-Dt6" secondAttribute="bottom" id="nsU-td-oKw"/>
+                            <constraint firstItem="E9L-Tc-Dt6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rtJ-xE-zEJ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="HhY-tm-fe0"/>
+                    <navigationItem key="navigationItem" title="RSS Reader" id="jLM-pi-Rfh"/>
                     <connections>
-                        <outlet property="tableView" destination="jk4-0S-b48" id="03h-U4-4yS"/>
+                        <outlet property="tableView" destination="E9L-Tc-Dt6" id="6Ie-DQ-Aip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808" y="49"/>
+            <point key="canvasLocation" x="1595" y="79"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ZUm-qG-hwW">
+        <scene sceneID="U3w-kB-h3Z">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3s1-Ur-bZI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ytd-JL-GDm" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eg0-hQ-iwD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jvP-rr-YPj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Td0-PR-Ca7"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="BOo-UD-laL"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jv0-9T-kPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uzd-Uz-7P8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="49"/>
+            <point key="canvasLocation" x="1210" y="79"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

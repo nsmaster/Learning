@@ -1,14 +1,14 @@
 //
 //  ViewController.h
-//  RSSReader
+//  RssReader
 //
-//  Created by Nikolay Shatilo on 24.02.14.
+//  Created by Nikolay Shatilo on 18.03.14.
 //  Copyright (c) 2014 Nikolay Shatilo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "RssManager.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RssManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end

@@ -1,18 +1,18 @@
 //
-//  RssReaderTests.m
-//  RssReaderTests
+//  AutoLayoutTests.m
+//  AutoLayoutTests
 //
-//  Created by Nikolay Shatilo on 18.03.14.
+//  Created by Nikolay Shatilo on 21.03.14.
 //  Copyright (c) 2014 Nikolay Shatilo. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface RssReaderTests : XCTestCase
+@interface AutoLayoutTests : XCTestCase
 
 @end
 
-@implementation RssReaderTests
+@implementation AutoLayoutTests
 
 - (void)setUp
 {

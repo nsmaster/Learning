@@ -40,7 +40,9 @@ NSString * const baseUrl = @"http://www.raywenderlich.com/demos/weather_sample/w
         operation.responseSerializer = [AFJSONResponseSerializer serializer];
         
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
+            self.weather = (NSDictionary *)responseObject;
+            self.title = @"JSON Retrieved";
+            [self.tableView reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
                                                                message:[error localizedDescription]
@@ -80,7 +82,9 @@ NSString * const baseUrl = @"http://www.raywenderlich.com/demos/weather_sample/w
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell"];
     
+    return cell;
 }
 
 @end

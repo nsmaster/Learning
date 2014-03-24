@@ -1,133 +1,113 @@
 //
 //  ViewController.m
-//  RSSReader
+//  RssReader
 //
-//  Created by Nikolay Shatilo on 24.02.14.
+//  Created by Nikolay Shatilo on 18.03.14.
 //  Copyright (c) 2014 Nikolay Shatilo. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "RSSEntry.h"
-#import <AFNetworking.h>
-#import "AFAppDotNetAPIClient.h"
+#import "NewsItem.h"
+#import "WebViewController.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) NSOperationQueue *operationQueue;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, strong) NSMutableArray *newsItems;
 
-@property (nonatomic, strong) NSDictionary *weather;
+@property (nonatomic, strong) RssManager *rssManager;
 
 @end
 
 @implementation ViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    
-    if(self) {
-        _operationQueue = [[NSOperationQueue alloc] init];
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateData)];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    [self cleanData];
 }
 
-- (NSMutableArray *)rssEntries
+- (void)cleanData
 {
-    if(!_rssEntries) {
-        _rssEntries = [[NSMutableArray alloc] init];
-        
-        //stream/0/posts/stream/global
-//        [[AFAppDotNetAPIClient sharedClient] GET:@"stream/0/posts/stream/global" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//            NSArray *postsFromResponse = [responseObject valueForKeyPath:@"data"];
-//            
-//            
-//        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//            NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
-//            NSLog(@"Response statusCode: %i", response.statusCode);
-//        }];
-//        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://podrobnosti.ua/"]];
-//        AFURLConnectionOperation *operation = [[AFURLConnectionOperation alloc] initWithRequest:request];
-//        
-//        [operation setCompletionBlock:^ {
-//            id data = operation.responseData;
-//        }];
-//        [operation start];
+    self.newsItems = nil;
+    self.rssManager = nil;
+}
 
-        static NSString * const BaseURLString = @"http://www.raywenderlich.com/demos/weather_sample/";
+- (void)updateData
+{
+    [self cleanData];
+    [self.tableView reloadData];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"web"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        NewsItem *newsItem = [self.newsItems objectAtIndex:indexPath.row];
         
-        NSString *string = [NSString stringWithFormat:@"%@weather.php?format=json", BaseURLString];
-        NSURL *url = [NSURL URLWithString:string];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        WebViewController *controller = segue.destinationViewController;
+        controller.link = newsItem.link;
+    }
+}
+
+- (NSMutableArray *)newsItems
+{
+    if (!_newsItems) {
+        _newsItems = [[NSMutableArray alloc] init];
         
-        // 2
-        AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-        operation.responseSerializer = [AFJSONResponseSerializer serializer];
-        
-        [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            
-            // 3
-            self.weather = (NSDictionary *)responseObject;
-            self.title = @"JSON Retrieved";
-            [self.tableView reloadData];
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            
-            // 4
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Weather"
-                                                                message:[error localizedDescription]
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }];
-        
-        // 5
-        [operation start];
-        
+        [self.rssManager startUpload:@"http://espreso.tv/rss"];
+        [self.rssManager startUpload:@"http://iphones.ru/rss"];
     }
     
-    return _rssEntries;
+    return _newsItems;
+}
+
+- (RssManager *)rssManager
+{
+    if(!_rssManager) {
+        _rssManager = [[RssManager alloc] init];
+        _rssManager.delegate = self;
+    }
+    
+    return _rssManager;
+}
+
+#pragma mark - RssManager
+
+- (void)addNewNewsItem:(NewsItem *)newsItem
+{
+    NSInteger count = [self.newsItems count];
+    [self.newsItems addObject:newsItem];
+    
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:count inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - TableView
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(!self.weather)
-        return 0;
-    
-    switch (section) {
-        case 0: {
-            return 1;
-        }
-        case 1: {
-            NSArray *upcomingWeather = [self.weather upcomingWeather];
-            return [upcomingWeather count];
-        }
-        default:
-            return 0;
-    }
+    return [self.newsItems count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCell"];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RssCell"];
+    
+    NewsItem *newsItem = [self.newsItems objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = newsItem.title;
     
     return cell;
 }
+
 
 @end

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  RssReader
+//  AutoLayout
 //
-//  Created by Nikolay Shatilo on 18.03.14.
+//  Created by Nikolay Shatilo on 21.03.14.
 //  Copyright (c) 2014 Nikolay Shatilo. All rights reserved.
 //
 
